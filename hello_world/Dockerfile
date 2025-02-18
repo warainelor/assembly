@@ -1,14 +1,12 @@
 FROM --platform=linux/amd64 alpine:latest AS builder
 
-ARG PROGRAM=hello_world
-
 RUN apk add --no-cache nasm binutils
 
 WORKDIR /app
 
-COPY $PROGRAM.asm .
+COPY hello_world.asm .
 
-RUN nasm -f elf64 $PROGRAM.asm -o object.o && \
+RUN nasm -f elf64 hello_world.asm -o object.o && \
     ld -s -o executable object.o
 
 FROM --platform=linux/amd64 alpine:latest
