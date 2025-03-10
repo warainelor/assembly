@@ -1,3 +1,5 @@
 docker build --platform linux/amd64 --build-arg PROGRAM=hello_world -t asm-app .
 
 docker run --rm --platform linux/amd64 asm-app
+
+./docker_run filename (without .sh)
